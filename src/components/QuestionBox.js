@@ -1,6 +1,6 @@
 import React,{useState}from 'react'
 
- const QuestionBox = ({question, options}) => {
+ const QuestionBox = ({question, options,selected}) => {
 
   const [answer, setAnswer] = useState(options)
   return (
@@ -9,7 +9,12 @@ import React,{useState}from 'react'
       {answer.map((answerOption,index)=>
         <button 
         className="answerBtn"
-        onClick={()=>setAnswer([answerOption])}>{answerOption}</button>
+        onClick={()=>
+          {setAnswer([answerOption]);
+          selected(answerOption);}}>
+          {answerOption}
+        
+        </button>
       )}
     </div>
   )
