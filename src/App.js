@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './App.css';
 import quizService from './quizService/index'
 import QuestionBox from './components/QuestionBox'
+import Results from './components/Results'
 
 
 class App extends Component {
@@ -35,6 +36,14 @@ class App extends Component {
     })
   }
 
+  playAgain = ()=>{
+    this.getQuestions();
+    this.setState({
+      score:0,
+      responses : 0
+    })
+  }
+
   
   render() {
     return (
@@ -52,7 +61,11 @@ class App extends Component {
          )}
 
         {this.state.responses === 5? 
-              (<h4>{this.state.score }</h4>): null
+              (<Results
+                score={this.state.score}
+                playAgain={this.playAgain}
+              />): 
+              null 
         }
       </div>
 
