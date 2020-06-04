@@ -13,7 +13,6 @@ class App extends Component {
     responses: 0
   }
 
-
   getQuestions =()=>{
     quizService().then((questions)=>{
       this.setState({
